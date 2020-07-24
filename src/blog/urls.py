@@ -15,7 +15,7 @@ urlpatterns = [
     path('create/', post_create,name="post-create"),
     path('search/', search ,name="search"),
     path('tinymce/', include('tinymce.urls')),
-
+    path('accounts/', include('allauth.urls')),
 ]
 
 if settings.DEBUG:
