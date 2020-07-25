@@ -11,19 +11,6 @@ def get_author(user):
         return queryset[0]
     return None
 
-def search(request):
-    queryset = Post.objects.all()
-    query = request.GET.get('q')
-    if query:
-        queryset = queryset.filter(
-            Q(title__icontains=query) |
-            Q(overview__icontains=query)
-        ).distinct()
-    context = {
-        'queryset':queryset
-    }
-    return render(request, 'search_results.html', context)
-
 def get_category_count():
     queryset = Post \
         .objects \
@@ -48,10 +35,23 @@ def index(request):
 
     return render(request, "index.html", context)
 
-def blog(request):
+def blog(request,cat=None):
+    query = request.GET.get('q')
     category_count = get_category_count()
     most_recent = Post.objects.order_by("-timestamp")[:3]
-    post_list = Post.objects.all()
+
+    #derive weather the call is from category search, regular serach, or the normal view
+    if cat:
+        post_list = Post.objects.filter(categories__title=cat)
+    elif query:
+        post_list = Post.objects.all()
+        post_list = post_list.filter(
+            Q(title__icontains=query) |
+            Q(overview__icontains=query)
+        ).distinct()
+    else:
+        post_list = Post.objects.all()
+
     paginator = Paginator(post_list, 4)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
@@ -136,14 +136,3 @@ def post_delete(request, id):
     post = get_object_or_404(Post, id=id)
     post.delete()
     return redirect(reverse("post-list"))
-
-def category_search(request,cat):
-    queryset = Post.objects.filter(categories__title=cat)
-    category_count = get_category_count()
-    most_recent = Post.objects.order_by("-timestamp")[:3]
-    context = {
-        "queryset":queryset,
-        "most_recent":most_recent,
-        "category_count":category_count,
-    }
-    return render(request, "search_results.html", context)

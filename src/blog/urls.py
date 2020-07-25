@@ -3,7 +3,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include
-from posts.views import index, blog, post, search, post_delete, post_update, post_create, category_search
+from posts.views import index, blog, post, post_delete, post_update, post_create
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -13,8 +13,8 @@ urlpatterns = [
     path('post/<id>/update', post_update,name="post-update"),
     path('post/<id>/delete', post_delete,name="post-delete"),
     path('create/', post_create,name="post-create"),
-    path('search/', search ,name="search"),
-    path('category/<str:cat>', category_search, name="category-search"),
+    path('search/', blog ,name="search"),
+    path('category/<str:cat>', blog, name="category-search"),
     path('tinymce/', include('tinymce.urls')),
     path('accounts/', include('allauth.urls')),
 ]
