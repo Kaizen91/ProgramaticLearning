@@ -14,6 +14,7 @@ urlpatterns = [
     path('post/<id>/delete', post_delete,name="post-delete"),
     path('create/', post_create,name="post-create"),
     path('search/', search ,name="search"),
+    path('category', category_search, name="category_search")
     path('tinymce/', include('tinymce.urls')),
     path('accounts/', include('allauth.urls')),
 ]
