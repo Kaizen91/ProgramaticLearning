@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from .models import Post, Author, PostView
+from .models import Post, Author, PostView, Category
 from marketing.models import Signup
 from django.db.models import Count, Q
 from .forms import CommentForm, PostForm
@@ -136,3 +136,14 @@ def post_delete(request, id):
     post = get_object_or_404(Post, id=id)
     post.delete()
     return redirect(reverse("post-list"))
+
+def category_search(request,cat):
+    queryset = Post.objects.filter(categories__title=cat)
+    category_count = get_category_count()
+    most_recent = Post.objects.order_by("-timestamp")[:3]
+    context = {
+        "queryset":queryset,
+        "most_recent":most_recent,
+        "category_count":category_count,
+    }
+    return render(request, "search_results.html", context)

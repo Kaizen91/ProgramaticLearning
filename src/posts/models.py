@@ -25,6 +25,11 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+    def get_category_url(self):
+        return reverse('category-search', kwargs={
+            "title": self.cat
+        })
+
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)

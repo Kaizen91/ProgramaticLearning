@@ -23,7 +23,7 @@
             <div class="image"><img src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></div>
             <div class="title"><strong>{{ post.title }}</strong>
               <div class="d-flex align-items-center">
-                <div class="views"><i class="icon-eye"></i>{{ post.view_count }}</div>
+                <div class="views"><i class="icon-eye"></i>{{ post.view_count }} </div>
                 <div class="comments"><i class="icon-comment"></i>{{ post.comment_count }}</div>
               </div>
             </div>
@@ -36,7 +36,9 @@
         <h3 class="h6">Categories</h3>
       </header>
       {% for cat in category_count %}
-      <div class="item d-flex justify-content-between"><a href="#">{{ cat.categories__title }}</a><span>{{ cat.categories__title__count }}</span></div>
+      <div class="item d-flex justify-conte{{nt-between">
+        <a href="{% url 'category-search' cat.categories__title %}">{{ cat.categories__title }} </a>
+      </div>
       {% endfor %}
     </div>
   </aside>
