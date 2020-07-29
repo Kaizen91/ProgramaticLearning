@@ -1,1 +1,1 @@
-web: gunicorn manage.py:app
+web: gunicorn blog.wsgi

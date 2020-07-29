@@ -1,4 +1,5 @@
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -169,3 +170,7 @@ TINYMCE_DEFAULT_CONFIG = {
 AUTH_USER_MODEL = 'posts.User'
 
 LOGIN_REDIRECT_URL = os.path.join(BASE_DIR,'templates/index.html')
+
+
+#Activate Django-Heroku
+django_heroku.SETTINGS(locals())
