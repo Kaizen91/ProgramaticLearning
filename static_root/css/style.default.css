@@ -8,10 +8,12 @@ Bootstrap Temple Blog Template
 ========================================= */
 /*
 
+
 * =====================
 * GENERAL
 * =====================
 */
+
 .text-bold {
   font-weight: 700;
 }
@@ -1494,6 +1496,7 @@ main.posts-listing .post-footer {
   font-weight: 400;
   font-family: "Open Sans", sans-serif;
 }
+
 
 .blog-post .add-comment input::-webkit-input-placeholder,
 .blog-post .add-comment textarea::-webkit-input-placeholder {
