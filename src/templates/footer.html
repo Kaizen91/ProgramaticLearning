@@ -8,7 +8,7 @@
         <h6 class="text-white">Programatic Learning</h6>
         </div>
         <div class="contact-details">
-        <p>Email: <a href="mailto:stephenlang91@gmail.com">Email</a></p>
+        <p>Contact: <a href="mailto:stephenlang91@gmail.com">Email</a></p>
         <ul class="social-menu">
         </ul>
         </div>
@@ -16,10 +16,10 @@
     <div class="col-md-4">
         <div class="menus d-flex">
         <ul class="list-unstyled">
-            <li> <a href="#">My Account</a></li>
+            <!-- <li> <a href="#">My Account</a></li>
             <li> <a href="#">Add Listing</a></li>
             <li> <a href="#">Pricing</a></li>
-            <li> <a href="#">Privacy &amp; Policy</a></li>
+            <li> <a href="#">Privacy &amp; Policy</a></li> -->
         </ul>
         <ul class="list-unstyled">
             <!-- <li> <a href="#">Our Partners</a></li>
@@ -30,19 +30,16 @@
         </div>
     </div>
     <div class="col-md-4">
-        <div class="latest-posts"><a href="#">
+        <div class="latest-posts">
+            <h6 class="text-white">Latest Posts</h6>
+            {% for obj in most_recent %}
+            <a href="#">
             <div class="post d-flex align-items-center">
-            <div class="image"><img src="{% static 'img/small-thumbnail-1.jpg' %}" alt="..." class="img-fluid"></div>
-            <div class="title"><strong>Hotels for all budgets</strong><span class="date last-meta">October 26, 2016</span></div>
-            </div></a><a href="#">
-            <div class="post d-flex align-items-center">
-            <div class="image"><img src="{% static 'img/small-thumbnail-2.jpg' %}" alt="..." class="img-fluid"></div>
-            <div class="title"><strong>Great street atrs in London</strong><span class="date last-meta">October 26, 2016</span></div>
-            </div></a><a href="#">
-            <div class="post d-flex align-items-center">
-            <div class="image"><img src="{% static 'img/small-thumbnail-3.jpg' %}" alt="..." class="img-fluid"></div>
-            <div class="title"><strong>Best coffee shops in Sydney</strong><span class="date last-meta">October 26, 2016</span></div>
-            </div></a></div>
+            <div class="image"><img src="{{ obj.thumbnail.url }}" alt="..." class="img-fluid"></div>
+            <div class="title"><strong>{{ obj.title }}</strong><span class="date last-meta">{{ obj.timestamp }}</span></div>
+            </div></a>
+            {% endfor %}
+        </div>
     </div>
     </div>
 </div>

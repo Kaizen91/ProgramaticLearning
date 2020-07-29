@@ -17,6 +17,7 @@ def password_reset(request):
 
 def login_view(request):
     next = request.GET.get('next')
+    most_recent = Post.objects.order_by('-timestamp')[:3]
     form = UserLoginForm(request.POST or None)
     if form.is_valid():
         username = form.cleaned_data.get('username')
@@ -27,12 +28,14 @@ def login_view(request):
             return redirect(next)
         return redirect('/')
     context = {
-        'form':form
+        'form':form,
+        'most_recent':most_recent,
     }
     return render(request, "login.html", context)
 
 def register_view(request):
     next = request.GET.get('next')
+    most_recent = Post.objects.order_by('-timestamp')[:3]
     form = UserRegisterForm(request.POST or None)
     if form.is_valid():
         user = form.save(commit=False)
@@ -45,7 +48,8 @@ def register_view(request):
             return redirect(next)
         return redirect('/')
     context = {
-        'form':form
+        'form':form,
+        'most_recent':most_recent,
     }
     return render(request, "signup.html", context)
 
@@ -68,7 +72,7 @@ def get_category_count():
 
 def index(request):
     featured = Post.objects.filter(featured=True)
-    latest = Post.objects.order_by('-timestamp')[:3]
+    most_recent = Post.objects.order_by('-timestamp')[:3]
 
     if request.method == "POST":
         email = request.POST["email"]
@@ -78,7 +82,7 @@ def index(request):
 
     context = {
         "object_list": featured,
-        'latest': latest,
+        'most_recent': most_recent,
     }
 
     return render(request, "index.html", context)
