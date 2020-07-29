@@ -3,7 +3,55 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Post, Author, PostView, Category
 from marketing.models import Signup
 from django.db.models import Count, Q
-from .forms import CommentForm, PostForm
+from .forms import CommentForm, PostForm, UserLoginForm, UserRegisterForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import (
+    authenticate,
+    get_user_model,
+    login,
+    logout
+)
+
+def password_reset(request):
+    pass
+
+def login_view(request):
+    next = request.GET.get('next')
+    form = UserLoginForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        login(request, user)
+        if next:
+            return redirect(next)
+        return redirect('/')
+    context = {
+        'form':form
+    }
+    return render(request, "login.html", context)
+
+def register_view(request):
+    next = request.GET.get('next')
+    form = UserRegisterForm(request.POST or None)
+    if form.is_valid():
+        user = form.save(commit=False)
+        password = form.cleaned_data.get('password')
+        user.set_password(password)
+        user.save()
+        new_user = authenticate(username=user.username, password=password)
+        login(request, new_user)
+        if next:
+            return redirect(next)
+        return redirect('/')
+    context = {
+        'form':form
+    }
+    return render(request, "signup.html", context)
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
 
 def get_author(user):
     queryset = Author.objects.filter(user=user)
@@ -20,7 +68,7 @@ def get_category_count():
 
 def index(request):
     featured = Post.objects.filter(featured=True)
-    most_recent = Post.objects.order_by('-timestamp')[:3]
+    latest = Post.objects.order_by('-timestamp')[:3]
 
     if request.method == "POST":
         email = request.POST["email"]
@@ -30,7 +78,7 @@ def index(request):
 
     context = {
         "object_list": featured,
-        'most_recent': most_recent,
+        'latest': latest,
     }
 
     return render(request, "index.html", context)
@@ -96,6 +144,7 @@ def post(request, id):
     }
     return render(request, "post.html", context )
 
+@login_required
 def post_create(request):
     title = 'Create'
     form = PostForm(request.POST or None, request.FILES or None)
@@ -113,7 +162,7 @@ def post_create(request):
     }
     return render(request, "post_create.html", context)
     
-
+@login_required
 def post_update(request, id):
     title ='Update'
     post = get_object_or_404(Post, id=id)
@@ -132,6 +181,7 @@ def post_update(request, id):
     }
     return render(request, "post_create.html", context)
 
+@login_required
 def post_delete(request, id):
     post = get_object_or_404(Post, id=id)
     post.delete()

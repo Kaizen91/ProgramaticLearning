@@ -3,7 +3,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include
-from posts.views import index, blog, post, post_delete, post_update, post_create
+from posts.views import index, blog, post, post_delete, post_update, post_create,login_view, password_reset, register_view, logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -17,6 +17,10 @@ urlpatterns = [
     path('category/<str:cat>', blog, name="category-search"),
     path('tinymce/', include('tinymce.urls')),
     path('accounts/', include('allauth.urls')),
+    path('login/', login_view, name="login"),
+    path('password_reset/', password_reset, name='password-reset'),
+    path('signup/', register_view, name="sign-up"),
+    path('logout/',logout_view,name='logout'),
 ]
 
 if settings.DEBUG:

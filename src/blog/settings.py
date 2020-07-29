@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'Accounts',
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
@@ -166,3 +167,5 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 AUTH_USER_MODEL = 'posts.User'
+
+LOGIN_REDIRECT_URL = os.path.join(BASE_DIR,'templates/index.html')
