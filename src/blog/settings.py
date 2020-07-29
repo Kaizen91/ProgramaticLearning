@@ -173,4 +173,4 @@ LOGIN_REDIRECT_URL = os.path.join(BASE_DIR,'templates/index.html')
 
 
 #Activate Django-Heroku
-django_heroku.SETTINGS(locals())
+django_heroku.settings(locals())
