@@ -4,9 +4,13 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import get_user_model
 from tinymce.models import HTMLField
 
+
+
 class User(AbstractUser):
     class Meta:
         db_table = 'auth_user'
+
+User = get_user_model() 
 
 class Author(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
