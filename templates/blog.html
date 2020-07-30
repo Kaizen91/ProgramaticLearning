@@ -10,7 +10,7 @@
               <!-- post -->
               {% for post in queryset %}
               <div class="post col-xl-6">
-                <div class="post-thumbnail"><a href="{% static post.thumbnail.url %}"><img src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></a>{% static post.thumbnail.url %}</div>
+                <div class="post-thumbnail"><a href={% static post.thumbnail.url %}><img src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></a>{% static post.thumbnail.url %}</div>
                 <div class="post-details">
                   <div class="post-meta d-flex justify-content-between">
                     <!-- <div class="date meta-last">20 May | 2016</div> -->
