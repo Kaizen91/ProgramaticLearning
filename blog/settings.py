@@ -1,6 +1,6 @@
 import os
-import django_heroku
-import dj_database_url
+# import django_heroku
+# import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -145,13 +145,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static_in_env')
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static_in_env')
+# ]
 VENV_PATH = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 #Tinymce
 
@@ -188,8 +188,8 @@ LOGIN_REDIRECT_URL = os.path.join(BASE_DIR,'templates/index.html')
 
 
 #Activate Django-Heroku
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 
 
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+# prod_db  =  dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(prod_db)
