@@ -1,5 +1,4 @@
 import os
-import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -14,7 +13,7 @@ SECRET_KEY = '303+f@v^!3okhjyh*m2yw_we-ax@5x5o66o9ae&0j@bxr)u$8l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['programatic-learning.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['164.90.213.232','127.0.0.1', 'programaticlearning.com']
 
 
 # Application definition
@@ -48,7 +47,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'blog.urls'
@@ -85,14 +83,24 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+else:
+    DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'proglearn',
+        'USER': 'stephen',
+        'PASSWORD': 'Chairleg91!',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
-
 
 
 
@@ -132,13 +140,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-# PROJECT_ROOT =os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]
+STATICFILES_DIRS = [
+     os.path.join(BASE_DIR, 'static_in_env')
+ ]
 VENV_PATH = os.path.dirname(BASE_DIR)
-STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
-MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 #Tinymce
 
@@ -174,5 +184,3 @@ AUTH_USER_MODEL = 'posts.User'
 LOGIN_REDIRECT_URL = os.path.join(BASE_DIR,'templates/index.html')
 
 
-#Activate Django-Heroku
-django_heroku.settings(locals())
