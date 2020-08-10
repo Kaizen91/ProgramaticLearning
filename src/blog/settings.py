@@ -11,7 +11,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '303+f@v^!3okhjyh*m2yw_we-ax@5x5o66o9ae&0j@bxr)u$8l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['164.90.213.232','127.0.0.1', 'programaticlearning.com']
 
