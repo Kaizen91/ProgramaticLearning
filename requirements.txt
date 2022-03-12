@@ -4,7 +4,7 @@ Django==3.0.8
 isort==4.3.21
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
-Pillow==7.2.0
+Pillow==9.0.1
 pylint==2.5.3
 pytz==2020.1
 six==1.15.0
@@ -26,7 +26,7 @@ jsmin==2.2.2
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
 oauthlib==3.1.0
-Pillow==7.2.0
+Pillow==9.0.1
 pylint==2.5.3
 python3-openid==3.2.0
 pytz==2020.1
@@ -53,7 +53,7 @@ jsmin==2.2.2
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
 oauthlib==3.1.0
-Pillow==7.2.0
+Pillow==9.0.1
 pylint==2.5.3
 python3-openid==3.2.0
 pytz==2020.1
@@ -82,7 +82,7 @@ jsmin==2.2.2
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
 oauthlib==3.1.0
-Pillow==7.2.0
+Pillow==9.0.1
 psycopg2==2.8.5
 pylint==2.5.3
 python3-openid==3.2.0
@@ -113,7 +113,7 @@ jsmin==2.2.2
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
 oauthlib==3.1.0
-Pillow==7.2.0
+Pillow==9.0.1
 psycopg2==2.8.5
 pylint==2.5.3
 python3-openid==3.2.0
@@ -144,7 +144,7 @@ jsmin==2.2.2
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
 oauthlib==3.1.0
-Pillow==7.2.0
+Pillow==9.0.1
 psycopg2==2.8.5
 pylint==2.5.3
 python3-openid==3.2.0
@@ -175,7 +175,7 @@ jsmin==2.2.2
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
 oauthlib==3.1.0
-Pillow==7.2.0
+Pillow==9.0.1
 psycopg2==2.8.5
 pylint==2.5.3
 python3-openid==3.2.0
@@ -206,7 +206,7 @@ jsmin==2.2.2
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
 oauthlib==3.1.0
-Pillow==7.2.0
+Pillow==9.0.1
 psycopg2==2.8.5
 psycopg2-binary==2.8.5
 pylint==2.5.3
