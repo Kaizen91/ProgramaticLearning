@@ -13,7 +13,7 @@ toml==0.10.1
 wrapt==1.12.1
 asgiref==3.2.10
 astroid==2.4.2
-certifi==2020.6.20
+certifi==2022.12.7
 chardet==3.0.4
 defusedxml==0.6.0
 Django==3.0.8
@@ -39,7 +39,7 @@ urllib3==1.25.10
 wrapt==1.12.1
 asgiref==3.2.10
 astroid==2.4.2
-certifi==2020.6.20
+certifi==2022.12.7
 chardet==3.0.4
 defusedxml==0.6.0
 Django==3.0.8
@@ -66,7 +66,7 @@ urllib3==1.25.10
 wrapt==1.12.1
 asgiref==3.2.10
 astroid==2.4.2
-certifi==2020.6.20
+certifi==2022.12.7
 chardet==3.0.4
 defusedxml==0.6.0
 dj-database-url==0.5.0
@@ -97,7 +97,7 @@ whitenoise==5.1.0
 wrapt==1.12.1
 asgiref==3.2.10
 astroid==2.4.2
-certifi==2020.6.20
+certifi==2022.12.7
 chardet==3.0.4
 defusedxml==0.6.0
 dj-database-url==0.5.0
@@ -128,7 +128,7 @@ whitenoise==5.1.0
 wrapt==1.12.1
 asgiref==3.2.10
 astroid==2.4.2
-certifi==2020.6.20
+certifi==2022.12.7
 chardet==3.0.4
 defusedxml==0.6.0
 dj-database-url==0.5.0
@@ -159,7 +159,7 @@ whitenoise==5.1.0
 wrapt==1.12.1
 asgiref==3.2.10
 astroid==2.4.2
-certifi==2020.6.20
+certifi==2022.12.7
 chardet==3.0.4
 defusedxml==0.6.0
 dj-database-url==0.5.0
@@ -190,7 +190,7 @@ whitenoise==5.1.0
 wrapt==1.12.1
 asgiref==3.2.10
 astroid==2.4.2
-certifi==2020.6.20
+certifi==2022.12.7
 chardet==3.0.4
 defusedxml==0.6.0
 dj-database-url==0.5.0
